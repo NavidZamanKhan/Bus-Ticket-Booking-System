@@ -58,7 +58,6 @@ class BookingSystem:
         self.tickets: List[Ticket] = self.store.load_tickets()
         self._preload_if_empty()
 
-    # Preload demo data on first run
     def _preload_if_empty(self) -> None:
         if self.buses:
             return
@@ -88,7 +87,6 @@ class BookingSystem:
         ]
         self.store.save_buses(self.buses)
 
-    # Public API
     def list_buses(self) -> List[Bus]:
         return list(self.buses)
 
@@ -144,7 +142,6 @@ class BookingSystem:
         )
 
         self.tickets.append(ticket)
-        # Persist both buses (seat change) and tickets
         self.store.save_buses(self.buses)
         self.store.save_tickets(self.tickets)
         return ticket
@@ -160,5 +157,3 @@ class BookingSystem:
                 self.store.save_tickets(self.tickets)
                 return True
         return False
-
-
