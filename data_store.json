@@ -1,0 +1,142 @@
+{
+  "buses": [
+    {
+      "name": "Ena Transport",
+      "origin": "Sylhet",
+      "destination": "Dhaka",
+      "departure_time": "08:00",
+      "total_seats": 40,
+      "price_per_ticket": 800,
+      "available_seats": 40
+    },
+    {
+      "name": "Hanif Enterprise",
+      "origin": "Sylhet",
+      "destination": "Chittagong",
+      "departure_time": "09:00",
+      "total_seats": 40,
+      "price_per_ticket": 900,
+      "available_seats": 40
+    },
+    {
+      "name": "Shyamoli Paribahan",
+      "origin": "Dhaka",
+      "destination": "Chittagong",
+      "departure_time": "10:30",
+      "total_seats": 40,
+      "price_per_ticket": 1000,
+      "available_seats": 40
+    },
+    {
+      "name": "Desh Travels",
+      "origin": "Dhaka",
+      "destination": "Sylhet",
+      "departure_time": "11:00",
+      "total_seats": 40,
+      "price_per_ticket": 850,
+      "available_seats": 38
+    },
+    {
+      "name": "London Express",
+      "origin": "Sylhet",
+      "destination": "Cumilla",
+      "departure_time": "14:00",
+      "total_seats": 40,
+      "price_per_ticket": 700,
+      "available_seats": 40
+    },
+    {
+      "name": "Saudia Coach",
+      "origin": "Sylhet",
+      "destination": "Feni",
+      "departure_time": "15:30",
+      "total_seats": 40,
+      "price_per_ticket": 650,
+      "available_seats": 39
+    },
+    {
+      "name": "Green Line Paribahan",
+      "origin": "Dhaka",
+      "destination": "Chittagong",
+      "departure_time": "07:30",
+      "total_seats": 40,
+      "price_per_ticket": 1200,
+      "available_seats": 40
+    },
+    {
+      "name": "Shohagh Paribahan",
+      "origin": "Dhaka",
+      "destination": "Cox's Bazar",
+      "departure_time": "21:00",
+      "total_seats": 40,
+      "price_per_ticket": 1400,
+      "available_seats": 40
+    },
+    {
+      "name": "SilkLine",
+      "origin": "Sylhet",
+      "destination": "Dhaka",
+      "departure_time": "17:45",
+      "total_seats": 40,
+      "price_per_ticket": 800,
+      "available_seats": 35
+    },
+    {
+      "name": "Unique Paribahan",
+      "origin": "Sylhet",
+      "destination": "Chittagong",
+      "departure_time": "06:30",
+      "total_seats": 40,
+      "price_per_ticket": 900,
+      "available_seats": 40
+    },
+    {
+      "name": "Year-71 Express",
+      "origin": "Sylhet",
+      "destination": "Khulna",
+      "departure_time": "16:00",
+      "total_seats": 40,
+      "price_per_ticket": 1300,
+      "available_seats": 40
+    }
+  ],
+  "tickets": [
+    {
+      "ticket_id": 1,
+      "bus_id": "Desh Travels",
+      "passenger_name": "Sadman",
+      "contact_number": "10392833423",
+      "bus_name": "Desh Travels",
+      "origin": "Dhaka",
+      "destination": "Sylhet",
+      "departure_time": "11:00",
+      "seat_count": 2,
+      "price_paid": 1700
+    },
+    {
+      "ticket_id": 2,
+      "bus_id": "SilkLine",
+      "passenger_name": "Navid",
+      "contact_number": "09234032433",
+      "bus_name": "SilkLine",
+      "origin": "Sylhet",
+      "destination": "Dhaka",
+      "departure_time": "17:45",
+      "seat_count": 5,
+      "price_paid": 4000
+    },
+    {
+      "ticket_id": 3,
+      "bus_id": "Saudia Coach",
+      "passenger_name": "Navid Zaman Khan",
+      "contact_number": "01750605084",
+      "bus_name": "Saudia Coach",
+      "origin": "Sylhet",
+      "destination": "Feni",
+      "departure_time": "15:30",
+      "seat_count": 1,
+      "price_paid": 650
+    }
+  ],
+  "next_ticket_id": 4
+}
