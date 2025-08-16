@@ -7,7 +7,7 @@
       "departure_time": "08:00",
       "total_seats": 40,
       "price_per_ticket": 800,
-      "available_seats": 36
+      "available_seats": 32
     },
     {
       "name": "Hanif Enterprise",
@@ -206,6 +206,15 @@
       "total_seats": 40,
       "price_per_ticket": 400,
       "available_seats": 40
+    },
+    {
+      "name": "NR Travels",
+      "origin": "Sylhet",
+      "destination": "Barisal",
+      "departure_time": "18:30",
+      "total_seats": 40,
+      "price_per_ticket": 1200,
+      "available_seats": 40
     }
   ],
   "tickets": [
@@ -268,7 +277,19 @@
       "departure_time": "08:00",
       "seat_count": 4,
       "price_paid": 3200
+    },
+    {
+      "ticket_id": 6,
+      "bus_id": "Ena Transport",
+      "passenger_name": "Navid Zaman Khan",
+      "contact_number": "9823492393284",
+      "bus_name": "Ena Transport",
+      "origin": "Sylhet",
+      "destination": "Dhaka",
+      "departure_time": "08:00",
+      "seat_count": 4,
+      "price_paid": 3200
     }
   ],
-  "next_ticket_id": 6
+  "next_ticket_id": 7
 }

@@ -85,6 +85,7 @@ class BookingSystem:
             ("Green Line Paribahan", "Sylhet", "Dhaka", "15:00", 40, 1200),
             ("Shohagh Paribahan", "Sylhet", "Dhaka", "23:45", 40, 900),
             ("Haque Enterprise", "Sylhet", "Moulvibazar", "10:00", 40, 400),
+            ("NR Travels", "Sylhet", "Barisal", "18:30", 40, 1200),
         ]
 
         self.buses = [
