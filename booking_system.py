@@ -73,7 +73,20 @@ class BookingSystem:
             ("SilkLine", "Sylhet", "Dhaka", "17:45", 40, 800),
             ("Unique Paribahan", "Sylhet", "Chittagong", "06:30", 40, 900),
             ("Year-71 Express", "Sylhet", "Khulna", "16:00", 40, 1300),
+            ("Shyamoli NR Travels", "Sylhet", "Jessore", "20:00", 40, 1350),
+            ("Ena Transport", "Sylhet", "Rajshahi", "07:45", 40, 1400),
+            ("London Express", "Sylhet", "Bogra", "12:30", 40, 1100),
+            ("Hanif Enterprise", "Sylhet", "Feni", "13:45", 40, 700),
+            ("Desh Travels", "Dhaka", "Rajshahi", "09:15", 40, 1000),
+            ("Tungipara Express", "Dhaka", "Gopalganj", "06:45", 40, 600),
+            ("S Alam Paribahan", "Chittagong", "Cox's Bazar", "05:30", 40, 900),
+            ("Ena Transport", "Sylhet", "Cox's Bazar", "22:15", 40, 1700),
+            ("Saintmartin Paribahan", "Dhaka", "Teknaf", "23:00", 40, 1800),
+            ("Green Line Paribahan", "Sylhet", "Dhaka", "15:00", 40, 1200),
+            ("Shohagh Paribahan", "Sylhet", "Dhaka", "23:45", 40, 900),
+            ("Haque Enterprise", "Sylhet", "Moulvibazar", "10:00", 40, 400),
         ]
+
         self.buses = [
             Bus(
                 name=n,

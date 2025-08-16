@@ -4,7 +4,7 @@ import sys
 from typing import List, Optional, Callable
 
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QFont
+from PyQt6.QtGui import QFont, QPalette, QColor
 from PyQt6.QtWidgets import (
     QApplication,
     QComboBox,
@@ -14,6 +14,7 @@ from PyQt6.QtWidgets import (
     QLineEdit,
     QMainWindow,
     QMessageBox,
+    QGraphicsDropShadowEffect,
     QPushButton,
     QSpinBox,
     QTabWidget,
@@ -32,30 +33,48 @@ class ReceiptDialog(QDialog):
     def __init__(self, ticket: Ticket, parent: Optional[QWidget] = None) -> None:
         super().__init__(parent)
         self.setWindowTitle("Bus Ticket Receipt")
+        self.setMinimumWidth(420)
         layout = QVBoxLayout()
         layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-        title = QLabel("========== BUS TICKET ==========")
-        title.setFont(QFont("Segoe UI", 11, QFont.Weight.Bold))
+        title = QLabel("Ticket Receipt")
+        title.setFont(QFont("Segoe UI", 14, QFont.Weight.DemiBold))
         layout.addWidget(title)
-        layout.addWidget(QLabel(f"Ticket ID     : {ticket.ticket_id}"))
-        layout.addWidget(QLabel(f"Passenger     : {ticket.passenger_name}"))
-        layout.addWidget(QLabel(f"Contact       : {ticket.contact_number}"))
-        layout.addWidget(QLabel(f"Bus           : {ticket.bus_name}"))
-        layout.addWidget(
-            QLabel(f"Route         : {ticket.origin} -> {ticket.destination}")
-        )
-        layout.addWidget(QLabel(f"Departure     : {ticket.departure_time}"))
-        layout.addWidget(QLabel(f"Seats         : {ticket.seat_count}"))
-        layout.addWidget(QLabel(f"Amount Paid   : {ticket.price_paid} BDT"))
-        footer = QLabel("================================")
-        layout.addWidget(footer)
+        info = [
+            ("Ticket ID", str(ticket.ticket_id)),
+            ("Passenger", ticket.passenger_name),
+            ("Contact", ticket.contact_number),
+            ("Bus", ticket.bus_name),
+            ("Route", f"{ticket.origin} -> {ticket.destination}"),
+            ("Departure", ticket.departure_time),
+            ("Seats", str(ticket.seat_count)),
+            ("Amount Paid", f"{ticket.price_paid} BDT"),
+        ]
+        for key, val in info:
+            row = QHBoxLayout()
+            k = QLabel(f"{key}")
+            k.setMinimumWidth(110)
+            k.setFont(QFont("Segoe UI", 10, QFont.Weight.DemiBold))
+            v = QLabel(val)
+            row.addWidget(k)
+            row.addWidget(v)
+            row.addStretch(1)
+            layout.addLayout(row)
         button_box = QHBoxLayout()
         button_box.addStretch(1)
         ok_btn = QPushButton("Close")
         ok_btn.clicked.connect(self.accept)
         button_box.addWidget(ok_btn)
         layout.addLayout(button_box)
-        self.setLayout(layout)
+        container = QWidget()
+        container.setLayout(layout)
+        shadow = QGraphicsDropShadowEffect(self)
+        shadow.setBlurRadius(18)
+        shadow.setOffset(0, 6)
+        shadow.setColor(QColor(0, 0, 0, 160))
+        container.setGraphicsEffect(shadow)
+        outer = QVBoxLayout()
+        outer.addWidget(container)
+        self.setLayout(outer)
 
 
 class AvailableBusesTab(QWidget):
@@ -74,6 +93,9 @@ class AvailableBusesTab(QWidget):
             ]
         )
         self.table.horizontalHeader().setStretchLastSection(True)
+        self.table.setAlternatingRowColors(True)
+        self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
+        self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         refresh_btn = QPushButton("Refresh")
         refresh_btn.clicked.connect(self.refresh)
         layout = QVBoxLayout()
@@ -117,6 +139,9 @@ class SearchTab(QWidget):
             ]
         )
         self.table.horizontalHeader().setStretchLastSection(True)
+        self.table.setAlternatingRowColors(True)
+        self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
+        self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         form = QHBoxLayout()
         form.addWidget(QLabel("Origin:"))
         form.addWidget(self.origin_input)
@@ -233,6 +258,48 @@ class MainWindow(QMainWindow):
 
 def run_app() -> None:
     app = QApplication(sys.argv)
+    _apply_material_dark_theme(app)
     window = MainWindow()
     window.show()
     sys.exit(app.exec())
+
+
+def _apply_material_dark_theme(app: QApplication) -> None:
+    app.setStyle("Fusion")
+    palette = QPalette()
+    bg = QColor(30, 32, 34)
+    base = QColor(38, 41, 45)
+    alt = QColor(44, 47, 51)
+    text = QColor(220, 220, 220)
+    accent = QColor(98, 0, 238)
+    palette.setColor(QPalette.ColorRole.Window, bg)
+    palette.setColor(QPalette.ColorRole.WindowText, text)
+    palette.setColor(QPalette.ColorRole.Base, base)
+    palette.setColor(QPalette.ColorRole.AlternateBase, alt)
+    palette.setColor(QPalette.ColorRole.ToolTipBase, base)
+    palette.setColor(QPalette.ColorRole.ToolTipText, text)
+    palette.setColor(QPalette.ColorRole.Text, text)
+    palette.setColor(QPalette.ColorRole.Button, alt)
+    palette.setColor(QPalette.ColorRole.ButtonText, text)
+    palette.setColor(QPalette.ColorRole.BrightText, QColor(255, 85, 85))
+    palette.setColor(QPalette.ColorRole.Highlight, accent)
+    palette.setColor(QPalette.ColorRole.HighlightedText, QColor(255, 255, 255))
+    app.setPalette(palette)
+    stylesheet = """
+    QWidget { color: #E0E0E0; font-family: 'Segoe UI', 'Inter', sans-serif; }
+    QMainWindow, QWidget { background-color: #1E2022; }
+    QTabWidget::pane { border: 1px solid #2C2F33; border-radius: 8px; padding: 4px; }
+    QTabBar::tab { background: #2C2F33; border: 1px solid #2C2F33; border-bottom: none; padding: 8px 14px; margin-right: 6px; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+    QTabBar::tab:selected { background: #3A3E44; color: #FFFFFF; }
+    QTabBar::tab:hover { background: #34383D; }
+    QPushButton { background-color: #6200EE; color: white; border: none; border-radius: 8px; padding: 8px 14px; }
+    QPushButton:hover { background-color: #7C33F0; }
+    QPushButton:pressed { background-color: #4A00C8; }
+    QPushButton:disabled { background-color: #3A3E44; color: #9AA0A6; }
+    QLineEdit, QComboBox, QSpinBox { background: #26292D; border: 1px solid #2C2F33; border-radius: 8px; padding: 6px 8px; }
+    QLineEdit:focus, QComboBox:focus, QSpinBox:focus { border: 1px solid #6200EE; }
+    QTableWidget { background: #26292D; alternate-background-color: #2C2F33; gridline-color: #2C2F33; selection-background-color: #6200EE; selection-color: #FFFFFF; }
+    QHeaderView::section { background-color: #2C2F33; color: #E0E0E0; padding: 6px; border: none; border-right: 1px solid #1E2022; }
+    QTableWidget::item { padding: 6px; }
+    """
+    app.setStyleSheet(stylesheet)
