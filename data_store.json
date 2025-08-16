@@ -7,7 +7,7 @@
       "departure_time": "08:00",
       "total_seats": 40,
       "price_per_ticket": 800,
-      "available_seats": 40
+      "available_seats": 36
     },
     {
       "name": "Hanif Enterprise",
@@ -88,7 +88,7 @@
       "departure_time": "06:30",
       "total_seats": 40,
       "price_per_ticket": 900,
-      "available_seats": 40
+      "available_seats": 36
     },
     {
       "name": "Year-71 Express",
@@ -97,6 +97,114 @@
       "departure_time": "16:00",
       "total_seats": 40,
       "price_per_ticket": 1300,
+      "available_seats": 40
+    },
+    {
+      "name": "Shyamoli NR Travels",
+      "origin": "Sylhet",
+      "destination": "Jessore",
+      "departure_time": "20:00",
+      "total_seats": 40,
+      "price_per_ticket": 1350,
+      "available_seats": 40
+    },
+    {
+      "name": "Ena Transport",
+      "origin": "Sylhet",
+      "destination": "Rajshahi",
+      "departure_time": "07:45",
+      "total_seats": 40,
+      "price_per_ticket": 1400,
+      "available_seats": 40
+    },
+    {
+      "name": "London Express",
+      "origin": "Sylhet",
+      "destination": "Bogra",
+      "departure_time": "12:30",
+      "total_seats": 40,
+      "price_per_ticket": 1100,
+      "available_seats": 40
+    },
+    {
+      "name": "Hanif Enterprise",
+      "origin": "Sylhet",
+      "destination": "Feni",
+      "departure_time": "13:45",
+      "total_seats": 40,
+      "price_per_ticket": 700,
+      "available_seats": 40
+    },
+    {
+      "name": "Desh Travels",
+      "origin": "Dhaka",
+      "destination": "Rajshahi",
+      "departure_time": "09:15",
+      "total_seats": 40,
+      "price_per_ticket": 1000,
+      "available_seats": 40
+    },
+    {
+      "name": "Tungipara Express",
+      "origin": "Dhaka",
+      "destination": "Gopalganj",
+      "departure_time": "06:45",
+      "total_seats": 40,
+      "price_per_ticket": 600,
+      "available_seats": 40
+    },
+    {
+      "name": "S Alam Paribahan",
+      "origin": "Chittagong",
+      "destination": "Cox's Bazar",
+      "departure_time": "05:30",
+      "total_seats": 40,
+      "price_per_ticket": 900,
+      "available_seats": 40
+    },
+    {
+      "name": "Ena Transport",
+      "origin": "Sylhet",
+      "destination": "Cox's Bazar",
+      "departure_time": "22:15",
+      "total_seats": 40,
+      "price_per_ticket": 1700,
+      "available_seats": 40
+    },
+    {
+      "name": "Saintmartin Paribahan",
+      "origin": "Dhaka",
+      "destination": "Teknaf",
+      "departure_time": "23:00",
+      "total_seats": 40,
+      "price_per_ticket": 1800,
+      "available_seats": 40
+    },
+    {
+      "name": "Green Line Paribahan",
+      "origin": "Sylhet",
+      "destination": "Dhaka",
+      "departure_time": "15:00",
+      "total_seats": 40,
+      "price_per_ticket": 1200,
+      "available_seats": 40
+    },
+    {
+      "name": "Shohagh Paribahan",
+      "origin": "Sylhet",
+      "destination": "Dhaka",
+      "departure_time": "23:45",
+      "total_seats": 40,
+      "price_per_ticket": 900,
+      "available_seats": 40
+    },
+    {
+      "name": "Haque Enterprise",
+      "origin": "Sylhet",
+      "destination": "Moulvibazar",
+      "departure_time": "10:00",
+      "total_seats": 40,
+      "price_per_ticket": 400,
       "available_seats": 40
     }
   ],
@@ -136,7 +244,31 @@
       "departure_time": "15:30",
       "seat_count": 1,
       "price_paid": 650
+    },
+    {
+      "ticket_id": 4,
+      "bus_id": "Unique Paribahan",
+      "passenger_name": "daa",
+      "contact_number": "234234234 23423",
+      "bus_name": "Unique Paribahan",
+      "origin": "Sylhet",
+      "destination": "Chittagong",
+      "departure_time": "06:30",
+      "seat_count": 4,
+      "price_paid": 3600
+    },
+    {
+      "ticket_id": 5,
+      "bus_id": "Ena Transport",
+      "passenger_name": "Navid Zaman Khan",
+      "contact_number": "09230432092",
+      "bus_name": "Ena Transport",
+      "origin": "Sylhet",
+      "destination": "Dhaka",
+      "departure_time": "08:00",
+      "seat_count": 4,
+      "price_paid": 3200
     }
   ],
-  "next_ticket_id": 4
+  "next_ticket_id": 6
 }

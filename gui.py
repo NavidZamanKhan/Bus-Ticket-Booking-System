@@ -3,7 +3,7 @@ from __future__ import annotations
 import sys
 from typing import List, Optional, Callable
 
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtGui import QFont, QPalette, QColor
 from PyQt6.QtWidgets import (
     QApplication,
@@ -96,12 +96,19 @@ class AvailableBusesTab(QWidget):
         self.table.setAlternatingRowColors(True)
         self.table.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
         self.table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
-        refresh_btn = QPushButton("Refresh")
-        refresh_btn.clicked.connect(self.refresh)
         layout = QVBoxLayout()
         layout.addWidget(self.table)
-        layout.addWidget(refresh_btn)
         self.setLayout(layout)
+        self.refresh()
+
+        # Auto-reload timer (every 5 seconds)
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.auto_reload)
+        self.timer.start(5000)  # 5 seconds
+
+    def auto_reload(self) -> None:
+        self.system.buses = self.system.store.load_buses()
+        self.system.tickets = self.system.store.load_tickets()
         self.refresh()
 
     def refresh(self) -> None:
@@ -152,6 +159,15 @@ class SearchTab(QWidget):
         layout.addLayout(form)
         layout.addWidget(self.table)
         self.setLayout(layout)
+
+        # Auto-reload timer (every 5 seconds)
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.auto_reload)
+        self.timer.start(5000)  # 5 seconds
+
+    def auto_reload(self) -> None:
+        self.system.buses = self.system.store.load_buses()
+        self.system.tickets = self.system.store.load_tickets()
 
     def search(self) -> None:
         origin = self.origin_input.text().strip()
@@ -204,6 +220,18 @@ class BookTab(QWidget):
         form.addWidget(self.book_btn)
         self.setLayout(form)
         self.reload_buses()
+
+        # Auto-reload timer (every 5 seconds)
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.auto_reload)
+        self.timer.start(5000)  # 5 seconds
+
+    def auto_reload(self) -> None:
+        self.system.buses = self.system.store.load_buses()
+        self.system.tickets = self.system.store.load_tickets()
+        self.reload_buses()
+        if self.on_refresh:
+            self.on_refresh()
 
     def reload_buses(self) -> None:
         self.bus_select.clear()
